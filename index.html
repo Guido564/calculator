@@ -9,47 +9,98 @@
 </head>
 <body>
     <div class="container">
-        <div class="display"><input type="text" ></div>
+        <input class="display" type="text">
         
-        <div><button id="7">7</button></div>
-        <div><button id="8">8</button></div>
-        <div><button id="9">9</button></div>
-        <div class="operacion"><button id="/">/</button></div>
+        <button id="7" class="number">7</button>
+        <button id="8" class="number">8</button>
+        <button id="9" class="number">9</button>
+        <button id="/" class="operator">/</button>
 
-        <div><button id="4">4</button></div>
-        <div><button id="5">5</button></div>
-        <div><button id="6">6</button></div>
-        <div class="operacion"><button id="*">*</button></div>
+        <button id="4" class="number">4</button>
+        <button id="5" class="number">5</button>
+        <button id="6" class="number">6</button>
+        <button id="*" class="operator">*</button>
         
-        <div><button id="1">1</button></div>
-        <div><button id="2">2</button></div>
-        <div><button id="3">3</button></div>
-        <div class="operacion"><button id="-">-</button></div>
+        <button id="1" class="number">1</button>
+        <button id="2" class="number">2</button>
+        <button id="3" class="number">3</button>
+        <button id="-" class="operator">-</button>
 
-        <div><button id="0">0</button></div>
-        <div><button>C</button></div>
-        <div class="operacion"><button>=</button></div>
-        <div class="operacion"><button id="+">+</button></div>
+        <button id="0" class="number">0</button>
+        <button class="clear">C</button>
+        <button class="equal">=</button>
+        <button id="+" class="operator">+</button>
 
-        
     </div>
 
     <script>
         const buttons = document.querySelectorAll('button');
         const input = document.querySelector('input');
-        let evaluaciones
+        const clear = document.querySelector('.clear');
+        const numbers = document.querySelectorAll('.number');
+        const operators = document.querySelectorAll('.operator');
+        const equalKey = document.querySelector('.equal');
+        let result = '';
+        let firstNumber = '';
+        let secondNumber = '';
+        let operator = '';
+
+        equalKey.addEventListener('click', () => {
+            doMath()
+        }) 
+
+        numbers.forEach((number) => {
+            number.addEventListener('click', () => {
+                if (operator == '') {
+                    firstNumber += number.id;
+                } else {
+                    secondNumber += number.id;
+                }
+            }) 
+        })
+
+        operators.forEach((op) => {
+            op.addEventListener('click', () => {
+                if (operator != '') {
+                    doMath()
+                    operator = op.id
+                } else {
+                    if (firstNumber == '') {
+                        firstNumber += op.id;
+                    } else {
+                        operator += op.id;
+                    }
+                }
+            })
+        })
+
+        clear.addEventListener('click', () => {
+            input.value = '';
+            result = '';
+            firstNumber = '';
+            secondNumber = '';
+            operator = '';
+        })
 
         buttons.forEach((button) => {
                 button.addEventListener('click', () => {
-                    input.value += button.id
-                    evaluaciones = input.value
+                    input.value += button.id;
+                    result = input.value;
                 })
         })
+
+        function doMath() {
+            result = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
+            firstNumber = result;
+            input.value = result;
+            operator = '';
+            secondNumber = '';
+        }
 
         function operate(a, b, operator) {
             switch(operator) {
                 case '+':
-                    return add(a, b)
+                    return add(a, b);
                     break;
                 case '-':
                     return subtract(a, b);
@@ -78,7 +129,11 @@
         }
 
         function divide(a, b) {
-            return a / b;
+            if(a == 0 || b == 0) {
+                return 'Nanana'
+            } else {
+                return a / b;
+            }
         }
     </script>
 </body>
