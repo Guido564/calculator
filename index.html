@@ -46,7 +46,12 @@
         let operator = '';
 
         equalKey.addEventListener('click', () => {
-            doMath()
+            if (firstNumber == '') {
+                input.value = 'La nada misma es la nada'
+            } else {
+                doMath()
+            }
+            
         }) 
 
         numbers.forEach((number) => {
