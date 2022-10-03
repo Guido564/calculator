@@ -47,7 +47,11 @@
 
         equalKey.addEventListener('click', () => {
             if (firstNumber == '') {
-                input.value = 'La nada misma es la nada'
+                input.value = 'Nothingness!'
+            } else if (operator == '') {
+                input.value = firstNumber
+            } else if (secondNumber == '') {
+                input.value = 'You are doing it wrong! D:'
             } else {
                 doMath()
             }
@@ -135,7 +139,7 @@
 
         function divide(a, b) {
             if(a == 0 || b == 0) {
-                return 'Nanana'
+                return '¯\\_(ツ)_/¯'
             } else {
                 return a / b;
             }
