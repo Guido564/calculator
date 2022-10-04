@@ -12,9 +12,14 @@ let secondNumber = '';
 let operator = '';
 
 pi.addEventListener('click', () => {
+    
     if (!operator) {
+        result = ''
+        input.value = result
         firstNumber = pi.id
     } else {
+        
+        input.value = result.replace(secondNumber, '')
         secondNumber = pi.id
     }
 })
