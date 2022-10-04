@@ -5,10 +5,19 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equalKey = document.querySelector('.equal');
 const lastIndex = document.querySelector('.last-index');
+const pi = document.querySelector('.pi');
 let result = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
+
+pi.addEventListener('click', () => {
+    if (!operator) {
+        firstNumber = pi.id
+    } else {
+        secondNumber = pi.id
+    }
+})
 
 lastIndex.addEventListener('click', () => {
     if (operator && secondNumber != '') {
@@ -29,7 +38,7 @@ equalKey.addEventListener('click', () => {
     } else if (operator == '') {
         input.value = firstNumber
     } else if (secondNumber == '') {
-        input.value = 'You are doing it wrong!'
+        input.value = 'Hmmmmmm'
     } else {
         doMath()
     }
@@ -99,8 +108,10 @@ function operate(a, b, operator) {
         case '/':
             return divide(a, b);
             break;
+        case '%':
+            return remainder(a, b);
         default:
-            return 'Valores incorrectos';
+            return 'Unexpected';
     }
 }
 
@@ -122,5 +133,13 @@ function divide(a, b) {
         return '¯\\_(ツ)_/¯'
     } else {
         return a / b;
+    }
+}
+
+function remainder(a, b) {
+    if(a == 0 || b == 0) {
+        return '¯\\_(ツ)_/¯'
+    } else {
+        return a % b;
     }
 }
