@@ -4,10 +4,24 @@ const clear = document.querySelector('.clear');
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equalKey = document.querySelector('.equal');
+const lastIndex = document.querySelector('.last-index');
 let result = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
+
+lastIndex.addEventListener('click', () => {
+    if (operator && secondNumber != '') {
+        secondNumber = secondNumber.slice(0, -1);
+    } else if (operator && secondNumber == '') {
+        operator = operator.slice(0, -1);
+    } else if (firstNumber) {
+        firstNumber = firstNumber.toString().slice(0, -1);
+    }
+
+    result = result.slice(0, -1); 
+    input.value = result
+})
 
 equalKey.addEventListener('click', () => {
     if (firstNumber == '') {
@@ -70,6 +84,7 @@ function doMath() {
     secondNumber = '';
 }
 
+//funcion principal a correr
 function operate(a, b, operator) {
     switch(operator) {
         case '+':
@@ -89,6 +104,7 @@ function operate(a, b, operator) {
     }
 }
 
+//Operaciones basicas que corre la calculadora
 function add(a, b) {
     return a + b;
 }
