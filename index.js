@@ -6,11 +6,23 @@ const operators = document.querySelectorAll('.operator');
 const equalKey = document.querySelector('.equal');
 const lastIndex = document.querySelector('.last-index');
 const github = document.querySelector('.github');
+const float = document.querySelector('.float')
 
 let result = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
+input.value = ''
+
+float.addEventListener('click', floatNumber)
+
+function floatNumber() {
+    if (!operator) {
+        if (firstNumber === '') {
+            
+        }
+    }
+}
 
 github.addEventListener('click', () => {
     input.value = 'Guido564 :)       '
@@ -31,11 +43,11 @@ lastIndex.addEventListener('click', () => {
 
 equalKey.addEventListener('click', () => {
     if (firstNumber === '') {
-        input.value = 'Nothingness!'
+        console.log('Nothing is going to happen boy')
     } else if (operator == '') {
         input.value = firstNumber
     } else if (secondNumber == '') {
-        input.value = 'Hmmmmmm'
+        console.log('Still nothing')
     } else {
         doMath()
     }
@@ -53,12 +65,19 @@ numbers.forEach((number) => {
 
 operators.forEach((op) => {
     op.addEventListener('click', () => {
-        if (operator != '') {
+        let comp = result.toString().charAt(result.length-1)
+        if(comp == '/' || comp == '+' || comp == '%' || comp == '*' || comp == '-') {
+            operator = comp
+            result = result.slice(0, -1); 
+            input.value = result
+        } else if (operator != '') {
             doMath()
             operator = op.id
         } else {
             if (firstNumber === '') {
-                firstNumber += op.id;
+                input.value = 0
+                firstNumber = 0
+                operator = op.id
             } else {
                 operator += op.id;
             }
@@ -67,9 +86,9 @@ operators.forEach((op) => {
 })
 
 clear.addEventListener('click', () => {
-    input.value = '';
-    result = '';
     firstNumber = '';
+    input.value = firstNumber;
+    result = '';
     secondNumber = '';
     operator = '';
 })
@@ -80,6 +99,7 @@ buttons.forEach((button) => {
             result = input.value;
         })
 })
+
 
 function doMath() {
     result = operate(parseFloat(firstNumber), parseFloat(secondNumber), operator);
@@ -125,7 +145,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if(a == 0 || b == 0) {
+    if(b == 0) {
         return '¯\\_(ツ)_/¯       '
     } else {
         return a / b;
