@@ -6,13 +6,13 @@ const operators = document.querySelectorAll('.operator');
 const equalKey = document.querySelector('.equal');
 const lastIndex = document.querySelector('.last-index');
 const github = document.querySelector('.github');
-const float = document.querySelector('.float')
+const float = document.querySelector('.float');
 
 let result = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
-input.value = ''
+input.value = '';
 
 float.addEventListener('click', floatNumber)
 
@@ -25,7 +25,7 @@ function floatNumber() {
 }
 
 github.addEventListener('click', () => {
-    input.value = 'Guido564 :)       '
+    input.value = 'Guido564 :)       ';
 })
 
 lastIndex.addEventListener('click', () => {
@@ -38,18 +38,18 @@ lastIndex.addEventListener('click', () => {
     }
 
     result = result.slice(0, -1); 
-    input.value = result
+    input.value = result;
 })
 
 equalKey.addEventListener('click', () => {
     if (firstNumber === '') {
-        console.log('Nothing is going to happen boy')
+        console.log('Nothing is going to happen boy');
     } else if (operator == '') {
-        input.value = firstNumber
+        input.value = firstNumber;
     } else if (secondNumber == '') {
-        console.log('Still nothing')
+        console.log('Still nothing');
     } else {
-        doMath()
+        doMath();
     }
 }) 
 
@@ -65,19 +65,19 @@ numbers.forEach((number) => {
 
 operators.forEach((op) => {
     op.addEventListener('click', () => {
-        let comp = result.toString().charAt(result.length-1)
+        let comp = result.toString().charAt(result.length-1);
         if(comp == '/' || comp == '+' || comp == '%' || comp == '*' || comp == '-') {
-            operator = comp
             result = result.slice(0, -1); 
-            input.value = result
+            input.value = result;
+            operator = op.id;
         } else if (operator != '') {
-            doMath()
-            operator = op.id
+            doMath();
+            operator = op.id;
         } else {
             if (firstNumber === '') {
-                input.value = 0
-                firstNumber = 0
-                operator = op.id
+                input.value = 0;
+                firstNumber = 0;
+                operator = op.id;
             } else {
                 operator += op.id;
             }
@@ -153,7 +153,7 @@ function divide(a, b) {
 }
 
 function remainder(a, b) {
-    if(a == 0 || b == 0) {
+    if(b == 0) {
         return 'ಠ_ಠ             '
     } else {
         return a % b;
