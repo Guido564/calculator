@@ -5,23 +5,15 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equalKey = document.querySelector('.equal');
 const lastIndex = document.querySelector('.last-index');
-const pi = document.querySelector('.pi');
+const github = document.querySelector('.github');
+
 let result = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
 
-pi.addEventListener('click', () => {
-    
-    if (!operator) {
-        result = ''
-        input.value = result
-        firstNumber = pi.id
-    } else {
-        
-        input.value = result.replace(secondNumber, '')
-        secondNumber = pi.id
-    }
+github.addEventListener('click', () => {
+    input.value = 'Guido564 :)       '
 })
 
 lastIndex.addEventListener('click', () => {
@@ -38,7 +30,7 @@ lastIndex.addEventListener('click', () => {
 })
 
 equalKey.addEventListener('click', () => {
-    if (firstNumber == '') {
+    if (firstNumber === '') {
         input.value = 'Nothingness!'
     } else if (operator == '') {
         input.value = firstNumber
@@ -47,7 +39,6 @@ equalKey.addEventListener('click', () => {
     } else {
         doMath()
     }
-    
 }) 
 
 numbers.forEach((number) => {
@@ -66,7 +57,7 @@ operators.forEach((op) => {
             doMath()
             operator = op.id
         } else {
-            if (firstNumber == '') {
+            if (firstNumber === '') {
                 firstNumber += op.id;
             } else {
                 operator += op.id;
@@ -135,7 +126,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if(a == 0 || b == 0) {
-        return '¯\\_(ツ)_/¯'
+        return '¯\\_(ツ)_/¯       '
     } else {
         return a / b;
     }
@@ -143,7 +134,7 @@ function divide(a, b) {
 
 function remainder(a, b) {
     if(a == 0 || b == 0) {
-        return '¯\\_(ツ)_/¯'
+        return 'ಠ_ಠ             '
     } else {
         return a % b;
     }

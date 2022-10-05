@@ -55,13 +55,24 @@ button:hover {
     font-size: 30px;
 }
 
-.pi,
 .float,
 .operator,
 .equal {
     background-color: #ff9500;
     font-weight: bold;
     color: #505050;
+}
+
+.github {
+    background-color: gainsboro;
+}
+
+.github img {
+    height: 40px;
+}
+
+.github:hover img {
+    height: 41px;
 }
 
 .last-index {
