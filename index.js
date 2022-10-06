@@ -18,8 +18,8 @@ float.addEventListener('click', floatNumber)
 
 function floatNumber() {
     if (!operator) {
-        if (!firstNumber.includes('.')) {
-            if (firstNumber === '') {
+        if (!firstNumber.toString().includes('.')) {
+            if (firstNumber.toString() === '') {
                 firstNumber = '0.';
                 input.value = '0.';
             } else {
