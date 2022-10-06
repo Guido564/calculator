@@ -131,19 +131,25 @@ function doMath() {
 function operate(a, b, operator) {
     switch(operator) {
         case '+':
-            return add(a, b);
+            a = add(a, b);
+            return Math.round(a * 100)/100
+            ;
             break;
         case '-':
-            return subtract(a, b);
+            a = subtract(a, b)
+            return Math.round(a * 100)/100;
             break;
         case '*':
-            return multiply(a, b);
+            a = multiply(a, b)
+            return Math.round(a * 100)/100;
             break;
         case '/':
-            return divide(a, b);
+            a = divide(a, b)
+            return Math.round(a * 100)/100;
             break;
         case '%':
-            return remainder(a, b);
+            a = remainder(a, b)
+            return Math.round(a * 100)/100;
         default:
             return 'Unexpected';
     }
