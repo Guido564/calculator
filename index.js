@@ -18,8 +18,24 @@ float.addEventListener('click', floatNumber)
 
 function floatNumber() {
     if (!operator) {
-        if (firstNumber === '') {
-            
+        if (!firstNumber.includes('.')) {
+            if (firstNumber === '') {
+                firstNumber = '0.';
+                input.value = '0.';
+            } else {
+                firstNumber += '.';
+                input.value += '.';
+            }
+        }
+    } else {
+        if (!secondNumber.includes('.')) {
+            if (secondNumber === '') {
+                secondNumber = '0.';
+                input.value += '0.';
+            } else {
+                secondNumber += '.';
+                input.value += '.';
+            }
         }
     }
 }
@@ -95,8 +111,10 @@ clear.addEventListener('click', () => {
 
 buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            input.value += button.id;
-            result = input.value;
+            if (button.id != '.') {
+                input.value += button.id;
+                result = input.value;
+            }
         })
 })
 
